@@ -1,6 +1,8 @@
 package com.sda.dorinagheorghe.webshop;
 
 import com.sda.dorinagheorghe.webshop.model.Account;
+import com.sda.dorinagheorghe.webshop.model.Customer;
+import com.sda.dorinagheorghe.webshop.repository.AccountRepository;
 import com.sda.dorinagheorghe.webshop.service.CustomerService;
 import com.sda.dorinagheorghe.webshop.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +22,10 @@ public class WebshopApplication implements CommandLineRunner {
 
     @Autowired
     private CustomerService customerService;
-
     @Autowired
     private MailService mailService;
+    @Autowired
+    private AccountRepository accountRepository;
 
     public static void main(String[] args) {
 
@@ -38,7 +41,10 @@ public class WebshopApplication implements CommandLineRunner {
         Account account1 = new Account();
         account1.setId(1L);
 
-        customerService.addCustomer(account1);
+        Customer customer = new Customer();
+        customer.setId(1L);
+
+        customerService.addCustomer(account1, customer);
 
         customerService.getCustomerAccounts().forEach(account -> System.out.println(account.toString())); //sau method reference in lambda customerService.getCustomerAccounts().forEach(System.out::println), este recom cand var din stg si dr este aceeasi ->account
 
@@ -46,5 +52,10 @@ public class WebshopApplication implements CommandLineRunner {
                 "dorinutg@gmail.com",
                 "test",
                 "hello");
+
+        accountRepository.findAllByIsClosed(false).forEach(System.out::println);
+
+
+
     }
 }
