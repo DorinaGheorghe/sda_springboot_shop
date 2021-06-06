@@ -2,6 +2,7 @@ package com.sda.dorinagheorghe.webshop;
 
 import com.sda.dorinagheorghe.webshop.model.Account;
 import com.sda.dorinagheorghe.webshop.service.CustomerService;
+import com.sda.dorinagheorghe.webshop.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,6 +14,9 @@ public class WebshopApplication implements CommandLineRunner {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private MailService mailService;
 
     public static void main(String[] args) {
 
@@ -30,9 +34,11 @@ public class WebshopApplication implements CommandLineRunner {
 
         customerService.addCustomer(account1);
 
-        customerService.getCustomerAccounts().forEach(account -> System.out.println(account)); //sau method reference in lambda customerService.getCustomerAccounts().forEach(System.out::println), este recom cand var din stg si dr este aceeasi ->account
+        customerService.getCustomerAccounts().forEach(account -> System.out.println(account.toString())); //sau method reference in lambda customerService.getCustomerAccounts().forEach(System.out::println), este recom cand var din stg si dr este aceeasi ->account
 
+        mailService.sendMail("dorina.gheorghe393@gmail.com",
+                "dorinutg@gmail.com",
+                "test",
+                "hello");
     }
-
-
 }
