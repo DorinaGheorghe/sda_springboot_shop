@@ -14,6 +14,7 @@ public class MailService {
     public MailService(MailProperties mailProperties) {
         this.mailProperties = mailProperties;
     }
+
     public void sendMail(String from, String to, String subject, String content) throws Exception {
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", mailProperties.getAuth());

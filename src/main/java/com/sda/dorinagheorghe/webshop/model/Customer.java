@@ -3,25 +3,25 @@ package com.sda.dorinagheorghe.webshop.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="customer")
+@Table(name = "customer")
 public class Customer {
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name="id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column (name="address")
+    @Column(name = "address")
     private String address;
 
-    @Column (name="phone")
+    @Column(name = "phone")
     private String phone;
 
-    @Column (name="email")
+    @Column(name = "email")
     private String email;
 
     @OneToOne
-    @JoinColumn(name="account_id")
+    @JoinColumn(name = "account_id")
     private Account account;
-
 
 
     public Long getId() {
