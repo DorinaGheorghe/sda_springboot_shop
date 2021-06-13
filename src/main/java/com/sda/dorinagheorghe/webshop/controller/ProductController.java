@@ -6,6 +6,7 @@ import com.sda.dorinagheorghe.webshop.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +34,7 @@ public class ProductController {
     }
 
     @PostMapping("/products")
-    public String createproduct(@RequestBody Product product) {
+    public String createproduct(@Valid @RequestBody Product product) {
         productService.save(product);
         return "Product saved";
     }
