@@ -1,6 +1,6 @@
 package com.sda.dorinagheorghe.webshop.model;
 
 public enum ProductCategory {
-    GROSERY,
+    GROCERY,
     PET_FOOD
 }
